@@ -1,0 +1,9 @@
+Robinhood stop order service
+
+How does this service need to behave?
+
+Use a price from trading view as a trigger
+
+When a price is reached cancel all trades
+Sell all coin
+

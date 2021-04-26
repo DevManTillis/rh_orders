@@ -1,0 +1,5 @@
+chalice/deployments/
+chalice/venv/
+config/config.yml
+__pycache__
+chalicelib/config/config.yml
