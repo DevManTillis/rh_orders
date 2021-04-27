@@ -69,7 +69,7 @@ class AWS:
     def rds(self):
         return self.__rds
     @property
-    def lambda(self):
+    def aws_lambda(self):
         return self.__lambda
 
 
