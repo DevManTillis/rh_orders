@@ -8,7 +8,7 @@ ENDPOINT="database-1-instance-1.c0iillcvsqfx.us-west-2.rds.amazonaws.com"
 PORT="5432"
 USR="RDSCreds"
 REGION="us-west-2"
-DBNAME="registrar"
+DBNAME="database-1"
 
 #gets the credentials from .aws/credentials
 session = boto3.Session(profile_name='RDSCreds')
