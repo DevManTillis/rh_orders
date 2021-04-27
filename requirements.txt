@@ -3,3 +3,6 @@ robin-stocks==1.5.1
 pyyaml==5.3.1
 pytz==2020.1
 jsonschema
+psycopg2
+boto3
+awscli

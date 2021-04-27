@@ -24,6 +24,7 @@ python3 -m pip install -r lib/requirements.txt
 ## Setup AWS-CLI authentication
 ```bash
 aws configure
+aws configure --profile "RDSCreds"
 ```
 
 ## Setup AWS Chalice
@@ -42,6 +43,7 @@ chalice deploy
 ```
 
 ## Manually Test
+- Build & test on Ubuntu18.04
 - Use Insomnia Client to test local and remote POST events
 - Modify In AWS Lambda UI line 82 of robin_stocks/authentication.py  home_dir = os.path.expanduser("~") --> home_dir = os.path.expanduser("/tmp")
 

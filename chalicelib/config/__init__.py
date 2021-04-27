@@ -34,9 +34,49 @@ class RobinHood:
         return self.__password
 
 
+class AwsRds:
+    def __init__(self, YAML):
+        self.__aws = YAML['AWS']
+        self.__rds = YAML['rds']
+
+    @property
+    def access_key_id(self):
+        return self.__rds['access_key_id']
+    @property
+    def secret_access_key(self):
+        return self.__rds['secret_access_key']
+
+
+class AwsLambda:
+    def __init__(self, YAML):
+        self.__aws = YAML['AWS']
+        self.__lambda = YAML['lambda']
+
+    @property
+    def access_key_id(self):
+        return self.__lambda['access_key_id']
+    @property
+    def secret_access_key(self):
+        return self.__lambda['secret_access_key']
+
+
+class AWS:
+    def __init__(self, YAML):
+        self.__rds = AwsRds(YAML)
+        self.__lambda = AwsLambda(YAML)
+
+    @property
+    def rds(self):
+        return self.__rds
+    @property
+    def lambda(self):
+        return self.__lambda
+
+
 class Config:
     def __init__(self, YAML):
         self.rh = RobinHood(YAML)
+        self.yaml = YAML
 
     @property
     def RobinHood(self):
@@ -45,6 +85,10 @@ class Config:
     @property
     def parent_id(self):
         return self.YAML['parent_id']
+
+    @property
+    def AWS(self):
+        return AWS(self.YAML)
 
 try:
     CONFIG=Config(YAML)
