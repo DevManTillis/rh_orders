@@ -25,6 +25,15 @@ def validate_input(JSON: dict) -> bool:
         print(f"ERROR: {__name__}.{inspect.stack()[0][3]}: " + str(e))
         return False
 
+def robin_hood_authcode(CONFIG: object) -> str:
+    try:
+        print("Log into robinhood API")
+        two_factor_auth_code = pyotp.TOTP(CONFIG.authcode).now()
+        return two_factor_auth_code
+    except Exception as e:
+        print(f"ERROR: {__name__}.{inspect.stack()[0][3]}: " + str(e))
+        return False
+
 
 def robin_hood_login(CONFIG: object) -> str:
     try:

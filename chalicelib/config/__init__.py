@@ -81,6 +81,15 @@ class Config:
     @property
     def RobinHood(self):
         return self.rh  
+    @property
+    def authcode(self):
+        return self.rh.authcode
+    @property
+    def user(self):
+        return self.rh.user
+    @property
+    def password(self):
+        return self.rh.password
 
     @property
     def parent_id(self):

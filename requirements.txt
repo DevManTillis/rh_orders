@@ -6,3 +6,4 @@ jsonschema
 psycopg2
 boto3
 awscli
+pyotp
