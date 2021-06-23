@@ -33,16 +33,13 @@ def robin_hood_trade(CONFIG, JSON):
     
     if is_trade_window():
         if JSON['order_type'].lower() == 'limit_sell_order':
-            subscriber_push(JSON=JSON, parent_id=CONFIG.parent_id)
             sell_crypto_limit(symbol=JSON['ticker'], price=float(JSON['price']))
 
         if JSON['order_type'].lower() == 'stop_loss':
-            subscriber_push(JSON=JSON, parent_id=CONFIG.parent_id)
             total_crypto_dollar_amount = get_crypto_usd_value(ticker=JSON['ticker'])
             stop_loss_order(symbol=JSON['ticker'], trigger_sell_price=JSON['price'])
 
         if JSON['order_type'].lower() == 'take_profit':
-            subscriber_push(JSON=JSON, parent_id=CONFIG.parent_id)
             total_crypto_dollar_amount = get_crypto_usd_value(ticker=JSON['ticker'])
             take_profit_order(symbol=JSON['ticker'], trigger_sell_price=JSON['price'])
             

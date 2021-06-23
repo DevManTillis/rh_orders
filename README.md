@@ -42,10 +42,22 @@ chalice local --port=8000
 chalice deploy
 ```
 
+## Request Format Crypto
+```json
+{"ticker": "LTCUSD", "price": 2007.53, "time": "2021-03-13T22", "order_type": "stop_loss"}
+```
+
+## Request Format Stock
+```json
+{"ticker": "", "price": 2007.53, "time": "2021-03-13T22", "order_type": "stop_loss"}
+```
+
 ## Manually Test
 - Build & test on Ubuntu18.04
 - Use Insomnia Client to test local and remote POST events
+- Create AWS user API key for shell use
 - Modify In AWS Lambda UI line 82 of robin_stocks/authentication.py  home_dir = os.path.expanduser("~") --> home_dir = os.path.expanduser("/tmp")
+- View AWS lambda logs, click lambda function, click monitor tab, click view logs in cloudwatch
 
 Tasks
 - [x] Capability to buy crypto

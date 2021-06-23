@@ -165,16 +165,16 @@ def get_current_price(symbol: str) -> float:
         return False
 
 
-def subscriber_push(JSON: dict, parent_id: str) -> bool:
-    """
-    Send JSON payload to all other subscribers to this parent service
-    """
-    try:
-        JSON['parent_id'] = parent_id
-        return True
-    except Exception as e:
-        print(f"ERROR: {__name__}.{inspect.stack()[0][3]}: " + str(e))
-        return False
+# def subscriber_push(JSON: dict, parent_id: str) -> bool:
+#     """
+#     Send JSON payload to all other subscribers to this parent service
+#     """
+#     try:
+#         JSON['parent_id'] = parent_id
+#         return True
+#     except Exception as e:
+#         print(f"ERROR: {__name__}.{inspect.stack()[0][3]}: " + str(e))
+#         return False
 
 
 def stop_loss_order(symbol: str, trigger_sell_price: float) -> bool:
