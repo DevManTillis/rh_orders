@@ -44,12 +44,12 @@ chalice deploy
 
 ## Request Format Crypto
 ```json
-{"ticker": "LTCUSD", "price": 2007.53, "time": "2021-03-13T22", "order_type": "stop_loss"}
+{"ticker": "LTCUSD", "equity_type": "crypto", "price": 2007.53, "time": "2021-03-13T22", "order_type": "stop_loss"}
 ```
 
 ## Request Format Stock
 ```json
-{"ticker": "", "price": 2007.53, "time": "2021-03-13T22", "order_type": "stop_loss"}
+{"ticker": "SI", "equity_type": "stock", "price": 2007.53, "time": "2021-03-13T22", "order_type": "stop_loss"}
 ```
 
 ## Manually Test

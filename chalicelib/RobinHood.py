@@ -25,6 +25,7 @@ def validate_input(JSON: dict) -> bool:
         print(f"ERROR: {__name__}.{inspect.stack()[0][3]}: " + str(e))
         return False
 
+
 def robin_hood_authcode(CONFIG: object) -> str:
     try:
         print("Log into robinhood API")
@@ -177,6 +178,17 @@ def get_current_price(symbol: str) -> float:
 #         return False
 
 
+def stock_stop_loss_order(symbol: str, trigger_sell_price: float) -> bool:
+    try:
+        print(f"Stop Loss Order Sell of all {symbol} coin")
+        # cancel_crypto_orders(symbol=symbol)
+        # sell_crypto_market(symbol=symbol)
+        return True
+    except Exception as e:
+        print(f"ERROR: {__name__}.{inspect.stack()[0][3]}: " + str(e))
+        return False
+
+
 def stop_loss_order(symbol: str, trigger_sell_price: float) -> bool:
     try:
         print(f"Stop Loss Order Sell of all {symbol} coin")
@@ -186,6 +198,7 @@ def stop_loss_order(symbol: str, trigger_sell_price: float) -> bool:
     except Exception as e:
         print(f"ERROR: {__name__}.{inspect.stack()[0][3]}: " + str(e))
         return False
+
 
 def take_profit_order(symbol: str, trigger_sell_price: float) -> bool:
     try:

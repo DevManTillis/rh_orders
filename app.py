@@ -9,7 +9,8 @@ from chalicelib.RobinHood import (
     get_crypto_usd_value, 
     is_trade_window,
     validate_input,
-    take_profit_order
+    take_profit_order,
+    stock_stop_loss_order
     )
 from chalicelib.config import CONFIG, log
 import sys
@@ -32,17 +33,23 @@ def robin_hood_trade(CONFIG, JSON):
     available_funds = get_available_cash_amount()
     
     if is_trade_window():
-        if JSON['order_type'].lower() == 'limit_sell_order':
-            sell_crypto_limit(symbol=JSON['ticker'], price=float(JSON['price']))
+        if JSON['equity_type'] == "crypto":
+            if JSON['order_type'].lower() == 'limit_sell_order':
+                sell_crypto_limit(symbol=JSON['ticker'], price=float(JSON['price']))
 
-        if JSON['order_type'].lower() == 'stop_loss':
-            total_crypto_dollar_amount = get_crypto_usd_value(ticker=JSON['ticker'])
-            stop_loss_order(symbol=JSON['ticker'], trigger_sell_price=JSON['price'])
+            if JSON['order_type'].lower() == 'stop_loss':
+                total_crypto_dollar_amount = get_crypto_usd_value(ticker=JSON['ticker'])
+                stop_loss_order(symbol=JSON['ticker'], trigger_sell_price=JSON['price'])
 
-        if JSON['order_type'].lower() == 'take_profit':
-            total_crypto_dollar_amount = get_crypto_usd_value(ticker=JSON['ticker'])
-            take_profit_order(symbol=JSON['ticker'], trigger_sell_price=JSON['price'])
-            
+            if JSON['order_type'].lower() == 'take_profit':
+                total_crypto_dollar_amount = get_crypto_usd_value(ticker=JSON['ticker'])
+                take_profit_order(symbol=JSON['ticker'], trigger_sell_price=JSON['price'])
+
+        if JSON['equity_type'] == "stock":
+            if JSON['order_type'].lower() == 'stop_loss':
+                total_crypto_dollar_amount = get_crypto_usd_value(ticker=JSON['ticker'])
+                stock_stop_loss_order(symbol=JSON['ticker'], trigger_sell_price=JSON['price'])
+
     print("End Transaction")
     return "SUCCESS"
 
