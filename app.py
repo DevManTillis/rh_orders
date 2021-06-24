@@ -48,6 +48,10 @@ def robin_hood_trade(CONFIG, JSON):
         if JSON['equity_type'] == "stock":
             if JSON['order_type'].lower() == 'stop_loss':
                 stock_stop_loss_order(symbol=JSON['ticker'])
+        
+        if JSON['order_type'] == "mass_exit":
+            # Exit all positions in RH
+            pass
 
     print("End Transaction")
     return "SUCCESS"
