@@ -180,16 +180,25 @@ def get_current_price(symbol: str) -> float:
 
 def stock_stop_loss_order(symbol: str) -> bool:
     try:
-        print(f"Stop Loss Order Sell of entire {symbol} position")
-        # cancel_crypto_orders(symbol=symbol)
-        # sell_crypto_market(symbol=symbol)
-        items = r.account.get_open_stock_positions(info=None)
-        for item in items:
-            print(item)
-        # for orderid in orderids:
-        #     r.robin_stocks.robinhood.orders.cancel_crypto_order(orderid)
-        # quantity = ""
-        # r.order_sell_market(symbol, quantity, timeInForce='gtc', extendedHours=False, jsonify=True)
+        stock_orders = r.find_stock_orders(symbol=symbol)
+        instruments = list()
+
+        # Check all orders, cancel pending order for queued ticker
+        for order in stock_orders:
+            if order['state'] == "queued":
+                instruments.append(order['instrument'])
+                r.cancel_stock_order(order['id'])
+                print(f"Order for {symbol} canceled.")
+
+        # If position is held of specific symbol exit position
+        open_positions = r.get_open_stock_positions()
+        for position in open_positions:
+            if position['instrument'] in instruments:
+                r.order_sell_fractional_by_quantity(symbol=symbol, quantity=position['quantity'], timeInForce="gfd", extendedHours=False)
+                print(f"Market sell order submitted for {symbol}.")
+            else:
+                print(f"No current orders matching {symbol}. No market order submission.")
+
         return True
     except Exception as e:
         print(f"ERROR: {__name__}.{inspect.stack()[0][3]}: " + str(e))
