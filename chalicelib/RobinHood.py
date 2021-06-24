@@ -178,11 +178,18 @@ def get_current_price(symbol: str) -> float:
 #         return False
 
 
-def stock_stop_loss_order(symbol: str, trigger_sell_price: float) -> bool:
+def stock_stop_loss_order(symbol: str) -> bool:
     try:
-        print(f"Stop Loss Order Sell of all {symbol} coin")
+        print(f"Stop Loss Order Sell of entire {symbol} position")
         # cancel_crypto_orders(symbol=symbol)
         # sell_crypto_market(symbol=symbol)
+        items = r.account.get_open_stock_positions(info=None)
+        for item in items:
+            print(item)
+        # for orderid in orderids:
+        #     r.robin_stocks.robinhood.orders.cancel_crypto_order(orderid)
+        # quantity = ""
+        # r.order_sell_market(symbol, quantity, timeInForce='gtc', extendedHours=False, jsonify=True)
         return True
     except Exception as e:
         print(f"ERROR: {__name__}.{inspect.stack()[0][3]}: " + str(e))

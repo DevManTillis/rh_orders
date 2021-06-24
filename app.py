@@ -47,7 +47,6 @@ def robin_hood_trade(CONFIG, JSON):
 
         if JSON['equity_type'] == "stock":
             if JSON['order_type'].lower() == 'stop_loss':
-                total_crypto_dollar_amount = get_crypto_usd_value(ticker=JSON['ticker'])
                 stock_stop_loss_order(symbol=JSON['ticker'], trigger_sell_price=JSON['price'])
 
     print("End Transaction")
