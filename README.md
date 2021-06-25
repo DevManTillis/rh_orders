@@ -1,4 +1,5 @@
 # Quick Start
+This software is provided as is. No warranty. Can not be used without written consent from the developer. This is closed source software.
 
 ## Add config/config.yml configuration
 ```yaml
