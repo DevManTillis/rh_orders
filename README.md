@@ -1,4 +1,8 @@
-# Quick Start
+# RobinHood Orders AWS Lambda App
+Use this app in order to integrate robin hood crypto and stock trade orders with essentially any application.
+Deploy in AWS lambda in order to make requests of HTTP to initiate trades.
+
+### Quick Start
 This software is provided as is. No warranty. Can not be used without written consent from the developer. This is closed source software.
 
 ## Add config/config.yml configuration
@@ -74,6 +78,3 @@ Tasks
 
 # chalice docs
 - https://chalice-workshop.readthedocs.io/en/latest/env-setup.html#setting-up-aws-credentials
-
-# tutorial for building webhook trade app
-- https://www.youtube.com/watch?v=TKAo_Z-hzQs
