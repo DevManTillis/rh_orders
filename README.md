@@ -11,6 +11,9 @@ RobinHood:
   authcode: "Your robinhood account two factor code"
   user: "your robin hood user name"
   password: "your password"
+AWS:
+  access_key_id: ""
+  secret_access_key: ""
 ```
 
 ## Setup ENV

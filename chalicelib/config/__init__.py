@@ -15,89 +15,42 @@ YAML=dict()
 with open(dirname(__file__) + "/config.yml") as file:
     YAML = yaml.load(file, Loader=yaml.FullLoader)
 
-
+if YAML['RobinHood']['env'].lower() == "development":
+    with open(YAML['RobinHood']['dev_config_path']) as file:
+        YAML = yaml.load(file, Loader=yaml.FullLoader)
 
 class RobinHood:
     def __init__(self, YAML):
-        self.__authcode = YAML['RobinHood']['authcode']
-        self.__user = YAML['RobinHood']['user']
-        self.__password = YAML['RobinHood']['password']
-
-    @property
-    def authcode(self):
-        return self.__authcode
-    @property
-    def user(self):
-        return self.__user
-    @property
-    def password(self):
-        return self.__password
-
-
-class AwsRds:
-    def __init__(self, YAML):
-        self.__aws = YAML['AWS']
-        self.__rds = YAML['rds']
-
-    @property
-    def access_key_id(self):
-        return self.__rds['access_key_id']
-    @property
-    def secret_access_key(self):
-        return self.__rds['secret_access_key']
+        pass
+    authcode = YAML['RobinHood']['authcode']
+    user = YAML['RobinHood']['user']
+    password = YAML['RobinHood']['password']
 
 
 class AwsLambda:
     def __init__(self, YAML):
-        self.__aws = YAML['AWS']
-        self.__lambda = YAML['lambda']
-
-    @property
-    def access_key_id(self):
-        return self.__lambda['access_key_id']
-    @property
-    def secret_access_key(self):
-        return self.__lambda['secret_access_key']
+        pass
+    __aws = YAML['AWS']
+    access_key_id = __aws['access_key_id']
+    secret_access_key = __aws['secret_access_key']
 
 
 class AWS:
     def __init__(self, YAML):
-        self.__rds = AwsRds(YAML)
-        self.__lambda = AwsLambda(YAML)
-
-    @property
-    def rds(self):
-        return self.__rds
-    @property
-    def aws_lambda(self):
-        return self.__lambda
+        pass
+    aws_lambda = AwsLambda(YAML)
 
 
 class Config:
     def __init__(self, YAML):
-        self.rh = RobinHood(YAML)
-        self.yaml = YAML
+        pass
+    rh = RobinHood(YAML)
+    RobinHood = rh  
+    authcode = rh.authcode
+    user = rh.user
+    password = rh.password
+    AWS = AWS(YAML)
 
-    @property
-    def RobinHood(self):
-        return self.rh  
-    @property
-    def authcode(self):
-        return self.rh.authcode
-    @property
-    def user(self):
-        return self.rh.user
-    @property
-    def password(self):
-        return self.rh.password
-
-    @property
-    def parent_id(self):
-        return self.YAML['parent_id']
-
-    @property
-    def AWS(self):
-        return AWS(self.YAML)
 
 try:
     CONFIG=Config(YAML)
