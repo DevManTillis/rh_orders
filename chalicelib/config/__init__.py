@@ -47,6 +47,13 @@ class CoinMarketCap:
     url = YAML['CoinMarketCap']['url']
     api_key = YAML['CoinMarketCap']['api_key']
 
+class BinanceUS:
+    def __init__(self, YAML):
+        pass
+    parameters = YAML['BinanceUS']['parameters']
+    url = YAML['BinanceUS']['url']
+    api_key = YAML['BinanceUS']['api_key']
+    secret_key = YAML['BinanceUS']['secret_key']
 
 class Config:
     def __init__(self, YAML):
@@ -54,6 +61,7 @@ class Config:
     RobinHood = RobinHood(YAML)
     AWS       = AWS(YAML)
     CoinMarketCap = CoinMarketCap(YAML)
+    BinanceUS = BinanceUS(YAML)
 
 
 try:

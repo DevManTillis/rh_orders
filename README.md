@@ -21,6 +21,11 @@ CoinMarketCap:
     start: "1"
     limit: "5000"
     convert: "USD"
+BinanceUS:
+  url: "https://api.binance.us/"
+  api_key: ""
+  secret_key: ""
+  parameters:
 ```
 
 ## Setup ENV
