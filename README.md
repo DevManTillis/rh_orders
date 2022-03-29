@@ -14,6 +14,13 @@ RobinHood:
 AWS:
   access_key_id: ""
   secret_access_key: ""
+CoinMarketCap:
+  url: "https://sandbox-api.coinmarketcap.com/v1/"
+  api_key: ""
+  parameters:
+    start: "1"
+    limit: "5000"
+    convert: "USD"
 ```
 
 ## Setup ENV

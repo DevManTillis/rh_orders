@@ -1,3 +1,4 @@
+from inspect import Parameter
 from os.path import dirname
 import logging
 import logging.config
@@ -39,16 +40,20 @@ class AWS:
         pass
     aws_lambda = AwsLambda(YAML)
 
+class CoinMarketCap:
+    def __init__(self, YAML):
+        pass
+    parameters = YAML['CoinMarketCap']['parameters']
+    url = YAML['CoinMarketCap']['url']
+    api_key = YAML['CoinMarketCap']['api_key']
+
 
 class Config:
     def __init__(self, YAML):
         pass
-    rh        = RobinHood(YAML)
     RobinHood = RobinHood(YAML)
-    authcode  = rh.authcode
-    user      = rh.user
-    password  = rh.password
     AWS       = AWS(YAML)
+    CoinMarketCap = CoinMarketCap(YAML)
 
 
 try:

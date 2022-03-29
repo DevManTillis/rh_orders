@@ -16,8 +16,8 @@ class DataQuery:
     def robin_hood_login(self, CONFIG: object) -> str:
         try:
             print("Logging into robinhood API...")
-            two_factor_auth_code = pyotp.TOTP(CONFIG.authcode).now()
-            r.login(CONFIG.user, CONFIG.password, mfa_code=two_factor_auth_code, store_session=False)
+            two_factor_auth_code = pyotp.TOTP(CONFIG.RobinHood.authcode).now()
+            r.login(CONFIG.RobinHood.user , CONFIG.RobinHood.password, mfa_code=two_factor_auth_code, store_session=False)
             return "login success"
         except Exception as e:
             return f"ERROR: {__name__}.{inspect.stack()[0][3]}: " + str(e)

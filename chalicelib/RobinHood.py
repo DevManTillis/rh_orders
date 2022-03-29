@@ -29,7 +29,7 @@ def validate_input(JSON: dict) -> bool:
 def robin_hood_authcode(CONFIG: object) -> str:
     try:
         print("Log into robinhood API")
-        two_factor_auth_code = pyotp.TOTP(CONFIG.authcode).now()
+        two_factor_auth_code = pyotp.TOTP(CONFIG.RobinHood.authcode).now()
         return two_factor_auth_code
     except Exception as e:
         print(f"ERROR: {__name__}.{inspect.stack()[0][3]}: " + str(e))
@@ -39,8 +39,8 @@ def robin_hood_authcode(CONFIG: object) -> str:
 def robin_hood_login(CONFIG: object) -> str:
     try:
         print("Log into robinhood API")
-        two_factor_auth_code = pyotp.TOTP(CONFIG.authcode).now()
-        r.login(CONFIG.user, CONFIG.password, mfa_code=two_factor_auth_code, store_session=False)
+        two_factor_auth_code = pyotp.TOTP(CONFIG.RobinHood.authcode).now()
+        r.login(CONFIG.RobinHood.user, CONFIG.RobinHood.password, mfa_code=two_factor_auth_code, store_session=False)
         return two_factor_auth_code
     except Exception as e:
         print(f"ERROR: {__name__}.{inspect.stack()[0][3]}: " + str(e))
