@@ -31,4 +31,5 @@ class cmc_api(RequestPrereqs):
             print(e)
             return False
 
+
 print(cmc_api().request(endpoint="cryptocurrency/listings/latest"))

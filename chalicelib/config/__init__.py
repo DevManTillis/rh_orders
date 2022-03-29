@@ -13,8 +13,8 @@ YAML=dict()
 with open(dirname(__file__) + "/config.yml") as file:
     YAML = yaml.load(file, Loader=yaml.FullLoader)
 
-if YAML['RobinHood']['env'].lower() == "development":
-    with open(YAML['RobinHood']['dev_config_path']) as file:
+if YAML['settings']['env'].lower() == "development":
+    with open(YAML['settings']['dev_config_path']) as file:
         YAML = yaml.load(file, Loader=yaml.FullLoader)
 
 log = logging.getLogger(__name__)
